@@ -1,6 +1,6 @@
 {
   "name": "@aashu-dubey/capacitor-statusbar-safe-area",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get Status bar height and Safe area insets on Android & iOS.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "AshuCapacitorStatusbarSafeArea.podspec"
+    "AashuDubeyCapacitorStatusbarSafeArea.podspec"
   ],
   "author": "Ashutosh",
   "license": "MIT",
@@ -20,8 +20,7 @@
     "url": "git+https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "public"
+    "registry": "https://registry.npmjs.org/"
   },
   "bugs": {
     "url": "https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues"

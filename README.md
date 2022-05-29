@@ -1,6 +1,12 @@
-# @aashu-dubey/capacitor-statusbar-safe-area
+<div align="center">
+
+# capacitor-statusbar-safe-area
 
 Get Status bar height and Safe area insets on Android & iOS.
+
+[![npm](https://img.shields.io/npm/v/@aashu-dubey/capacitor-statusbar-safe-area?style=flat-square)](https://www.npmjs.com/package/@aashu-dubey/capacitor-statusbar-safe-area) [![npm](https://img.shields.io/npm/dm/@aashu-dubey/capacitor-statusbar-safe-area?style=flat-square)](https://www.npmjs.com/package/@aashu-dubey/capacitor-statusbar-safe-area) [![Install Size](https://packagephobia.now.sh/badge?p=@aashu-dubey/capacitor-statusbar-safe-area)](https://www.npmjs.com/package/@aashu-dubey/capacitor-statusbar-safe-area)
+
+</div>
 
 ## Install
 
@@ -55,9 +61,9 @@ then you can use them in your CSS files
 
 <docgen-index>
 
-* [`getStatusBarHeight()`](#getstatusbarheight)
-* [`getSafeAreaInsets()`](#getsafeareainsets)
-* [Interfaces](#interfaces)
+- [`getStatusBarHeight()`](#getstatusbarheight)
+- [`getSafeAreaInsets()`](#getsafeareainsets)
+- [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -74,8 +80,7 @@ Get the Status bar height on Android and iOS, and on Web it returns 0.
 
 **Returns:** <code>Promise&lt;{ height: number; }&gt;</code>
 
---------------------
-
+---
 
 ### getSafeAreaInsets()
 
@@ -87,11 +92,9 @@ Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 
 **Returns:** <code>Promise&lt;<a href="#safeareatype">SafeAreaType</a>&gt;</code>
 
---------------------
-
+---
 
 ### Interfaces
-
 
 #### SafeAreaType
 
