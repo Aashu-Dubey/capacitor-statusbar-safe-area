@@ -19,12 +19,12 @@ public class SafeAreaPlugin: CAPPlugin {
         } else {
             statusBarHeight = UIApplication.shared.statusBarFrame.height
         }
-        
+
         call.resolve([
             "height": statusBarHeight
         ])
     }
-    
+
     @objc func getSafeAreaInsets(_ call: CAPPluginCall) {
         let window: UIWindow?
         if #available(iOS 13.0, *) {
@@ -32,12 +32,12 @@ public class SafeAreaPlugin: CAPPlugin {
         } else {
             window = UIApplication.shared.keyWindow
         }
-        
+
         call.resolve([
             "top": window?.safeAreaInsets.top ?? 0,
             "bottom": window?.safeAreaInsets.bottom ?? 0,
             "left": window?.safeAreaInsets.left ?? 0,
-            "right": window?.safeAreaInsets.right ?? 0,
+            "right": window?.safeAreaInsets.right ?? 0
         ])
     }
 }

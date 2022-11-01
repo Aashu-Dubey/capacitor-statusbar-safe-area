@@ -8,16 +8,21 @@
     "mobile"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@capacitor/core": "latest",
     "@capacitor/camera": "latest",
     "@capacitor/splash-screen": "latest",
-    "@aashu-dubey/capacitor-statusbar-safe-area": "file:.."
+    "@aashu-dubey/capacitor-statusbar-safe-area": "file:..",
+    "@capacitor/ios": "^4.0.0",
+    "@capacitor/android": "^4.0.0"
   },
   "devDependencies": {
-    "@capacitor/cli": "latest"
+    "@capacitor/cli": "latest",
+    "vite": "^2.9.13"
   },
   "author": "",
   "license": "ISC"
