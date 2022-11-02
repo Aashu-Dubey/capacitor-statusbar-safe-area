@@ -57,6 +57,13 @@ then you can use them in your CSS files
 }
 ```
 
+## Capacitor version support
+
+| capacitor | plugin version |
+| --------- | -------------- |
+| v4.x      | 1.1.0          |
+| v3.x      | <= 1.0.1       |
+
 ## API
 
 <docgen-index>
