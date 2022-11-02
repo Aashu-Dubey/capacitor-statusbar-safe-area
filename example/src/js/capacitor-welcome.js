@@ -1,5 +1,9 @@
-import { SplashScreen } from '@capacitor/splash-screen';
+import {
+  SafeArea,
+  SafeAreaController,
+} from '@aashu-dubey/capacitor-statusbar-safe-area';
 import { Camera } from '@capacitor/camera';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 window.customElements.define(
   'capacitor-welcome',
@@ -57,7 +61,7 @@ window.customElements.define(
     </style>
     <div>
       <capacitor-welcome-titlebar>
-        <h1>Capacitor</h1>
+        <h1 id="header">Capacitor</h1>
       </capacitor-welcome-titlebar>
       <main>
         <p>
@@ -84,13 +88,32 @@ window.customElements.define(
         <p>
           <img id="image" style="max-width: 100%">
         </p>
+        <h2>Status bar & Safe Area Info</h2>
       </main>
     </div>
     `;
     }
 
-    connectedCallback() {
+    async connectedCallback() {
       const self = this;
+
+      // Injecting CSS variable so we can use then in styles
+      SafeAreaController.injectCSSVariables();
+
+      // Using plugin's following methods to get status bar height and safe area insets info
+      const { height } = await SafeArea.getStatusBarHeight();
+
+      const insets = await SafeArea.getSafeAreaInsets();
+
+      const mainContainer = self.shadowRoot.querySelector('main');
+      mainContainer.innerHTML += `
+        <p>Status bar height is: <b>${height}</b></p>
+        <p>Device's safe area insets are: <b>${JSON.stringify(insets)}</b></p>
+      `;
+
+      // The header top padding can also be set dynamically as shown below
+      // const root = self.shadowRoot.querySelector('#header');
+      // root.style.setProperty('padding-top', `${insets.top}px`); // or `${height}px`
 
       self.shadowRoot
         .querySelector('#take-photo')
@@ -135,6 +158,8 @@ window.customElements.define(
         font-size: 0.9em;
         font-weight: 600;
         color: #fff;
+        padding-top: var(--safe-area-inset-top); // or var(--status-bar-height)
+        // Using plugin's CSS variable here 👆🏼
       }
     </style>
     <slot></slot>

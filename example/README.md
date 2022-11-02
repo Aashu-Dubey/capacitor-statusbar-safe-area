@@ -10,3 +10,16 @@ To run the provided example, you can use `npm start` command.
 ```bash
 npm start
 ```
+
+#### Running on Android or iOS
+
+```bash
+# make sure to run below command before running on mobile
+npm run build
+
+# run on Android
+npx cap run android
+
+# run on iOS
+npx cap run ios
+```
