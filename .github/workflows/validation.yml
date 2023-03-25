@@ -1,0 +1,68 @@
+name: Validation
+
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+
+  # verify-web:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16'
+  #         cache: 'yarn'
+
+  #     - run: yarn install --frozen-lockfile
+  #     - run: yarn verify:web
+
+  verify-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+          cache: 'gradle'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn verify:android
+
+  verify-ios:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn verify:ios
