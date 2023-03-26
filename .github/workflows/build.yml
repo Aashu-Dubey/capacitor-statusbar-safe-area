@@ -40,6 +40,14 @@ jobs:
           generate-job-summary: false
 
       - name: Install packages
+        working-directory: .
+        run: yarn install --frozen-lockfile
+
+      - name: Build the project
+        working-directory: .
+        run: yarn build
+
+      - name: Install packages
         run: yarn install --frozen-lockfile
 
       - name: Build the project
@@ -87,6 +95,14 @@ jobs:
             ~/.cocoapods
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
           restore-keys: ${{ runner.os }}-pods-
+
+      - name: Install packages
+        working-directory: .
+        run: yarn install --frozen-lockfile
+
+      - name: Build the project
+        working-directory: .
+        run: yarn build
 
       - name: Install packages
         run: yarn install --frozen-lockfile
