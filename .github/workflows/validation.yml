@@ -40,6 +40,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      # Optional security step: Validate whether gradle-wrapper.jar is valid or malicious
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -49,7 +54,11 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '11'
-          cache: 'gradle'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          generate-job-summary: false
 
       - run: yarn install --frozen-lockfile
       - run: yarn verify:android

@@ -1,0 +1,127 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
+    branches:
+      - main
+
+defaults:
+  run:
+    working-directory: example
+
+jobs:
+  # Create example build for Android
+  build-apk:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Setup Web environment to install packages.
+      - name: Setup Web environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      # Setup Java environment in order to build the Android app.
+      - name: Setup Java 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          generate-job-summary: false
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      - name: Build the project
+        run: yarn build
+
+      - name: Sync to copy web assets into the platform
+        run: npx cap sync android
+
+      - name: Build Android debug APK
+        working-directory: example/android
+        run: ./gradlew assembleDebug
+
+      - name: Save apk file as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cap_safearea_plugin_example_android
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+  # Build iOS .app build that can drag and dropped into a iOS simulator
+  build-ios-simulator:
+    name: Create an iOS Simulator build
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Setup Web environment to install packages.
+      - name: Setup Web environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      # improve iOS build compilation time
+      - name: Restore buildcache
+        uses: mikehardy/buildcache-action@v2
+        continue-on-error: true
+
+      - name: Restore Pods cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+            ~/.cocoapods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: ${{ runner.os }}-pods-
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      - name: Build the project
+        run: yarn build
+
+      - name: Sync to copy web assets into the platform
+        run: npx cap sync ios
+
+      - name: Install xcpretty
+        run: gem install xcpretty
+
+      - name: Run simulator build command
+        working-directory: example/ios/App
+        run: |
+          set -o pipefail
+          xcodebuild \
+          CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ \
+          -scheme App \
+          -workspace App.xcworkspace \
+          -sdk iphonesimulator \
+          -configuration Release \
+          -derivedDataPath build | xcpretty
+
+      - name: Store build .app file as zip
+        working-directory: example/ios/App
+        run: |
+          cd build/Build/Products/Release-iphonesimulator
+          mv App.app safearea_plugin_example_ios.app
+          mkdir -p output
+          zip -r -y -o output/safearea_plugin_example_ios.zip safearea_plugin_example_ios.app
+
+      - name: Save build file as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cap_safearea_plugin_example_ios
+          path: ios/App/build/Build/Products/Release-iphonesimulator/output
