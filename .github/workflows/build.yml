@@ -1,4 +1,4 @@
-name: Build
+name: Build example
 
 on:
   push:
@@ -39,18 +39,18 @@ jobs:
         with:
           generate-job-summary: false
 
-      - name: Install packages
+      - name: Install plugin packages
         working-directory: .
         run: yarn install --frozen-lockfile
 
-      - name: Build the project
+      - name: Build the plugin
         working-directory: .
         run: yarn build
 
-      - name: Install packages
+      - name: Install example packages
         run: yarn install --frozen-lockfile
 
-      - name: Build the project
+      - name: Build the example project
         run: yarn build
 
       - name: Sync to copy web assets into the platform
@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cap_safearea_plugin_example_android
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: example/android/app/build/outputs/apk/debug/app-debug.apk
 
   # Build iOS .app build that can drag and dropped into a iOS simulator
   build-ios-simulator:
@@ -96,18 +96,18 @@ jobs:
           key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
           restore-keys: ${{ runner.os }}-pods-
 
-      - name: Install packages
+      - name: Install plugin packages
         working-directory: .
         run: yarn install --frozen-lockfile
 
-      - name: Build the project
+      - name: Build the plugin
         working-directory: .
         run: yarn build
 
-      - name: Install packages
+      - name: Install example packages
         run: yarn install --frozen-lockfile
 
-      - name: Build the project
+      - name: Build the example project
         run: yarn build
 
       - name: Sync to copy web assets into the platform
@@ -140,4 +140,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cap_safearea_plugin_example_ios
-          path: ios/App/build/Build/Products/Release-iphonesimulator/output
+          path: example/ios/App/build/Build/Products/Release-iphonesimulator/output
