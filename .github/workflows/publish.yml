@@ -24,7 +24,6 @@ jobs:
         with:
           node-version: '16'
           registry-url: 'https://npm.pkg.github.com'
-          always-auth: true
           cache: 'yarn'
 
       - name: Install packages
@@ -34,7 +33,7 @@ jobs:
         run: yarn build
 
       - name: Publish Package
-        run: yarn publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,7 +51,6 @@ jobs:
         with:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org'
-          always-auth: true
           cache: 'yarn'
 
       - name: Install packages
@@ -62,6 +60,6 @@ jobs:
         run: yarn build
 
       - name: Publish Package
-        run: yarn publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
