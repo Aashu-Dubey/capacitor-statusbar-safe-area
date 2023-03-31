@@ -58,6 +58,16 @@ window.customElements.define(
       main pre {
         white-space: pre-line;
       }
+      main .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      main .footer-text {
+        text-align: center;
+        margin: 0px;
+      }
     </style>
     <div>
       <capacitor-welcome-titlebar>
@@ -89,6 +99,10 @@ window.customElements.define(
           <img id="image" style="max-width: 100%">
         </p>
         <h2>Status bar & Safe Area Info</h2>
+
+        <safe-area class="footer" mode="margin" edges="bottom">
+          <p class="footer-text">This footer uses <b>safe-area</b> tag</p>
+        </safe-area>
       </main>
     </div>
     `;
