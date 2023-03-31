@@ -1,6 +1,6 @@
 {
   "name": "@aashu-dubey/capacitor-statusbar-safe-area",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Get Status bar height and Safe area insets on Android & iOS.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

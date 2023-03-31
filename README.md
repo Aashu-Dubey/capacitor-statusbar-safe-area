@@ -131,7 +131,7 @@ import '@aashu-dubey/capacitor-statusbar-safe-area';
 There are two attributes, that can be used with the `safe-area` web component to control it's behaviour, `mode` & `edges`.
 
 ```html
-<safe-area mode="margin" edges='top,left,right'></safe-area>
+<safe-area mode="margin" edges="top,left,right"></safe-area>
 ```
 
 more details [here](#safeareahtmlprops).
