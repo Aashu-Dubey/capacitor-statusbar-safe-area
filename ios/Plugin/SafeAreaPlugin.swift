@@ -20,7 +20,7 @@ public class SafeAreaPlugin: CAPPlugin {
             } else {
                 statusBarHeight = UIApplication.shared.statusBarFrame.height
             }
-            
+
             call.resolve([
                 "height": statusBarHeight
             ])
@@ -35,7 +35,7 @@ public class SafeAreaPlugin: CAPPlugin {
             } else {
                 window = UIApplication.shared.keyWindow
             }
-            
+
             call.resolve([
                 "top": window?.safeAreaInsets.top ?? 0,
                 "bottom": window?.safeAreaInsets.bottom ?? 0,
