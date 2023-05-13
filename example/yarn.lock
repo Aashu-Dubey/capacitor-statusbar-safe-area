@@ -5,20 +5,20 @@
 "@aashu-dubey/capacitor-statusbar-safe-area@file:..":
   version "2.0.0"
 
-"@capacitor/android@5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-5.0.0-beta.3.tgz#d1fe160b07cba2b5c52ece57851795e632315536"
-  integrity sha512-w9Q9OPi8o1Ay0IATiB7HhhQWPuUD9a3RsI/gc9okKjMbgROXtFGdupr/22pY5OVBjxeRX9VHGK4mmpAqAZ+bAg==
+"@capacitor/android@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-5.0.3.tgz#954f968c3d0b6d104ae9639fc5aad04acc0a8369"
+  integrity sha512-jPN6JJUbN2cCrAjP+0Q4gIwIxleFVChZWh+/gsbDDfSpogdpZNwZnriUNxSRTZayL58tUzLHuxpJxY6hsddDrA==
 
-"@capacitor/camera@5.0.0-beta.1":
-  version "5.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-5.0.0-beta.1.tgz#981e41985db051196da48861700edf30c6c24201"
-  integrity sha512-IpTEJ2E8iPLbYbxwKp2HY0UQcrHlFg45ZVQDuSik0rKVsrr5ZrnvFGNW4q61kNhBhUM8HJlBWg5ZKCWKhnwVGA==
+"@capacitor/camera@latest":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-5.0.2.tgz#74f458ee88faa6bbd185677591c8df62d1182c7c"
+  integrity sha512-XX8fQltyAPtHxoNcf7pITmRD10ERemduzda97MRd+oND+6hEqJ3vVlNjNy0uK2qjnageolw+7zJhA9PhBqMWfQ==
 
-"@capacitor/cli@5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-5.0.0-beta.3.tgz#8656e9dcf70a17978db8b356619fe8cb747c857f"
-  integrity sha512-0jRnqxesys6PTDNKZ6kl7r/bGru3fpYbkYGqT/DfsYvWF7zBrR09F+ohGSBT2c1p/6Aig9JOVABoggrPrz0yzA==
+"@capacitor/cli@latest":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-5.0.3.tgz#5f0549f4b731bc999cafd1b9dc89925bbd51ac13"
+  integrity sha512-VPmd/uKSCYqeLgNTrG2wVaMoCX8lo2UuXFVwP54W4nXPyG6LsDuOKYytkBItTAJrI3KEXdZWyRFbXjIY48/m6g==
   dependencies:
     "@ionic/cli-framework-output" "^2.2.5"
     "@ionic/utils-fs" "^3.1.6"
@@ -38,22 +38,22 @@
     tslib "^2.4.0"
     xml2js "^0.5.0"
 
-"@capacitor/core@5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-5.0.0-beta.3.tgz#e11ba2df2f0ff452d5a4f53f94107555e48218a3"
-  integrity sha512-veJbc/FsLxb1BiOJwBBR1aC6VIPZo+vKH3SvuuYxKX0NLo6ouTohqVD4iMMYLy+VaeSAaF08h0d8ymkooMraFA==
+"@capacitor/core@latest":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-5.0.3.tgz#0eea460fa4b4249dd4a2a97d7fef08b9a7b088e7"
+  integrity sha512-VxzSoFvoiGDmvlKQMbg7ZZh+w3Z223630kZINDOsbs7UZr5gZws7+m26Y9Oc8n2miI737hE6qOf2VU4H/8Tytg==
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/ios@5.0.0-beta.3":
-  version "5.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-5.0.0-beta.3.tgz#d585657b1b4071fef1a4a655aa3b62e9a24c6286"
-  integrity sha512-AbHf8y3RiIsHctyu/oUe5XtdR/g/FVxzOvjTQWvqkV/bBcoOuFzSa9SC+OpatmAd3Axlie5sUwVKNMh9zqucbg==
+"@capacitor/ios@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-5.0.3.tgz#d363b83efa96732301ff6b99d3389709e79fb79d"
+  integrity sha512-4U+mfiT0x2oYEJN9NAxcYKdrK4szROMe8SgIiG2lXDG7t7FK1OY4BnB1euZc8c+49VcBSk9x2EiYQg5Nshi5iQ==
 
-"@capacitor/splash-screen@5.0.0-beta.1":
-  version "5.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-5.0.0-beta.1.tgz#cff711676e0be4f0207f125769c4ee7e41b8d04c"
-  integrity sha512-dgTiKeLCSbPMugwEhMXm3BmWO0rkL0Gyl/ehtZUU8udi7nKloimdropyZoZATHFDZqDRhkAO/hrnrFTbWvxUgg==
+"@capacitor/splash-screen@latest":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-5.0.2.tgz#d5dbf5019e09199b3b8eee11edcddb30a48cb5b3"
+  integrity sha512-DJQQL3VfY7LfMH0FJgzrb0N1v3fZw0EVfBRB+xQjbI13jjoafS8WPRCQDvXxzoJqfh5hQyepDRyYxIdOCB2KEA==
 
 "@esbuild/linux-loong64@0.14.54":
   version "0.14.54"
