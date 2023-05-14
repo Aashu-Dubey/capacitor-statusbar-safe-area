@@ -76,6 +76,16 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 ```
 
+You might also have to empty import the plugin in your root component or at the component level file where you're using the tag
+
+```ts
+// app.component.ts or your-component.ts
+
+import '@aashu-dubey/capacitor-statusbar-safe-area';
+// or with named import if you're also using other APIs from plugin
+// import { SafeArea } from '@aashu-dubey/capacitor-statusbar-safe-area';
+```
+
 then just wrap the part you want to apply safe area padding on with `safe-area` tag as below
 
 ```html
@@ -138,10 +148,11 @@ more details [here](#safeareahtmlprops).
 
 ## Capacitor version support
 
-| capacitor | plugin version |
-| --------- | -------------- |
-| v4.x      | >= 1.1.0          |
-| v3.x      | <= 1.0.1       |
+| capacitor | plugin version       |
+| --------- | -------------------- |
+| v5.x      | 2.1.0                |
+| v4.x      | >= 1.1.0 && <= 2.0.0 |
+| v3.x      | <= 1.0.1             |
 
 ## API
 
@@ -183,7 +194,6 @@ Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 
 
 ### Interfaces
-
 
 #### SafeAreaType
 

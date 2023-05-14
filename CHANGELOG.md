@@ -1,10 +1,17 @@
 # Changelog
 
+## [v2.1.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.0.0...v2.1.0) - (14 May 2023)
+
+✨ Improvements
+
+- Upgraded plugin to Capacitor v5 ([#8](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/8)) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/8/files)).
+
 ## [v2.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v1.1.0...v2.0.0) - (1 Apr 2023)
 
 This version adds support for an addition way to handle safe area on device, using `safe-area` web component exported by the plugin.
 
 It can be used as follows:
+
 ```html
 <safe-area>
   <!-- Other content -->
@@ -14,6 +21,7 @@ It can be used as follows:
 It also comes with 2 attributes to control it's behaviour, `mode` and `edges`.
 
 For example, to use safe area insets as element's margin instead of default padding, and to apply only for top, we would write it as follows:
+
 ```html
 <safe-area mode="margin" edges="top">
   <!-- Other content -->
