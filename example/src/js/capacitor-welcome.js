@@ -2,7 +2,6 @@ import {
   SafeArea,
   SafeAreaController,
 } from '@aashu-dubey/capacitor-statusbar-safe-area';
-import { Camera } from '@capacitor/camera';
 import { SplashScreen } from '@capacitor/splash-screen';
 
 window.customElements.define(
@@ -75,31 +74,23 @@ window.customElements.define(
       </capacitor-welcome-titlebar>
       <main>
         <p>
-          Capacitor makes it easy to build powerful apps for the app stores, mobile web (Progressive Web Apps), and desktop, all
-          with a single code base.
+          Capacitor plugin to get status bar height and safe area insets on Android & iOS in your Capacitor application.
         </p>
         <h2>Getting Started</h2>
         <p>
-          You'll probably need a UI framework to build a full-featured app. Might we recommend
-          <a target="_blank" href="http://ionicframework.com/">Ionic</a>?
+          The plugin exports functions, CSS variables as well as web component to get and use safe area or status bar
+          height values.
         </p>
         <p>
-          Visit <a href="https://capacitorjs.com">capacitorjs.com</a> for information
-          on using native features, building plugins, and more.
-        </p>
-        <a href="https://capacitorjs.com" target="_blank" class="button">Read more</a>
-        <h2>Tiny Demo</h2>
-        <p>
-          This demo shows how to call Capacitor plugins. Say cheese!
+          Like in this sample, the header uses CSS variable, values below are using functions and the
+          footer uses web component (<b>&lt;safe-area&gt;</b> tag)
         </p>
         <p>
-          <button class="button" id="take-photo">Take Photo</button>
+          Have a look at project's <a href="https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area#readme">readme</a> for more
+          information on how to use it in your project.
         </p>
-        <p>
-          <img id="image" style="max-width: 100%">
-        </p>
+        <a href="https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area" target="_blank" class="button">Read more</a>
         <h2>Status bar & Safe Area Info</h2>
-
         <safe-area class="footer" mode="margin" edges="bottom">
           <p class="footer-text">This footer uses <b>safe-area</b> tag</p>
         </safe-area>
@@ -128,25 +119,6 @@ window.customElements.define(
       // The header top padding can also be set dynamically as shown below
       // const root = self.shadowRoot.querySelector('#header');
       // root.style.setProperty('padding-top', `${insets.top}px`); // or `${height}px`
-
-      self.shadowRoot
-        .querySelector('#take-photo')
-        .addEventListener('click', async function (e) {
-          try {
-            const photo = await Camera.getPhoto({
-              resultType: 'uri',
-            });
-
-            const image = self.shadowRoot.querySelector('#image');
-            if (!image) {
-              return;
-            }
-
-            image.src = photo.webPath;
-          } catch (e) {
-            console.warn('User cancelled', e);
-          }
-        });
     }
   },
 );

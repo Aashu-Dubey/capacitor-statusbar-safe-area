@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@capacitor/core": "latest",
-    "@capacitor/camera": "latest",
     "@capacitor/splash-screen": "latest",
     "@aashu-dubey/capacitor-statusbar-safe-area": "file:..",
     "@capacitor/ios": "^4.0.0",
