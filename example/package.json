@@ -16,8 +16,8 @@
     "@capacitor/core": "latest",
     "@capacitor/splash-screen": "latest",
     "@aashu-dubey/capacitor-statusbar-safe-area": "file:..",
-    "@capacitor/ios": "^4.0.0",
-    "@capacitor/android": "^4.0.0"
+    "@capacitor/android": "^5.0.3",
+    "@capacitor/ios": "^5.0.3"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
