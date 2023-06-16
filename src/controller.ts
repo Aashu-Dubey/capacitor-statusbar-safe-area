@@ -3,7 +3,7 @@ import { Capacitor } from '@capacitor/core';
 import type { SafeAreaType } from './index';
 import { SafeArea } from './index';
 
-class SafeAreaController {
+export class SafeAreaController {
   async injectCSSVariables(): Promise<void> {
     this.addStatusBarHeight();
     this.addSafeAreaVariables();
@@ -39,5 +39,3 @@ class SafeAreaController {
     }
   }
 }
-
-export default SafeAreaController;

@@ -1,6 +1,6 @@
 import { registerPlugin } from '@capacitor/core';
 
-import SafeAreaController from './controller';
+import { SafeAreaController } from './controller';
 import type { SafeAreaPlugin, SafeAreaHTMLProps } from './definitions';
 import { SafeAreaElement, registerSafeAreaElement } from './element';
 
