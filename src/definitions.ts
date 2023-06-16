@@ -7,10 +7,10 @@ export interface SafeAreaPlugin {
   /**
    * Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
    */
-  getSafeAreaInsets(): Promise<SafeAreaType>;
+  getSafeAreaInsets(): Promise<SafeAreaInset>;
 }
 
-export interface SafeAreaType {
+export interface SafeAreaInset {
   /**
    * Safe Area inset value at top.
    */

@@ -1,6 +1,6 @@
 import { Capacitor } from '@capacitor/core';
 
-import type { SafeAreaType } from './index';
+import type { SafeAreaInset } from './index';
 import { SafeArea } from './index';
 
 export class SafeAreaController {
@@ -26,7 +26,7 @@ export class SafeAreaController {
           {
             elStyle.setProperty(
               `--safe-area-inset-${inset}`,
-              `${safeAreaInset[inset as keyof SafeAreaType]}px`,
+              `${safeAreaInset[inset as keyof SafeAreaInset]}px`,
             );
           }
           break;
