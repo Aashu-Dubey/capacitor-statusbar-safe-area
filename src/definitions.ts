@@ -29,6 +29,10 @@ export interface SafeAreaInset {
   right: number;
 }
 
+// SafeAreaType was renamed to SafeAreaInset;
+// For backward compatibility, we'll expose the previous name too.
+export type SafeAreaType = SafeAreaInset;
+
 export interface SafeAreaHTMLProps {
   /**
    * Whether to apply safe area insets as `padding` or `margin`.
