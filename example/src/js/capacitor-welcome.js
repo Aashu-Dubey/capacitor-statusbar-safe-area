@@ -1,6 +1,7 @@
 import {
   SafeArea,
   SafeAreaController,
+  registerSafeAreaElement,
 } from '@aashu-dubey/capacitor-statusbar-safe-area';
 import { SplashScreen } from '@capacitor/splash-screen';
 
@@ -104,6 +105,8 @@ window.customElements.define(
 
       // Injecting CSS variable so we can use then in styles
       SafeAreaController.injectCSSVariables();
+      // Registering the safe-area custom element to use as an html tag
+      registerSafeAreaElement();
 
       // Using plugin's following methods to get status bar height and safe area insets info
       const { height } = await SafeArea.getStatusBarHeight();

@@ -1,5 +1,23 @@
 # Changelog
 
+## [v2.1.1](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.0...v2.1.1) - (18 Jun 2023)
+
+## Breaking Change
+
+- Make `safe-area` custom element opt-in to register only if needed and to also to prevent breaking evaluating `SafeAreaController` in SSR environments. by @jjang16 in [#9](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/9)
+
+If earlier you were using the `safe-area` tag by simple (Empty) import, you now have to import and call function `registerSafeAreaElement`
+
+```js
+// root.component.ts or your-component.ts
+
+import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
+```
+
+- `SafeAreaType` type has been renamed to `SafeAreaInset` ([changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/08404be...e181a2e))
+
 ## [v2.1.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.0.0...v2.1.0) - (14 May 2023)
 
 ✨ Improvements
