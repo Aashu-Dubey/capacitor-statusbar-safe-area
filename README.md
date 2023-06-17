@@ -76,14 +76,14 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 ```
 
-You might also have to empty import the plugin in your root component or at the component level file where you're using the tag
+You also have to register the custom element before using the tag
 
 ```ts
 // app.component.ts or your-component.ts
 
-import '@aashu-dubey/capacitor-statusbar-safe-area';
-// or with named import if you're also using other APIs from plugin
-// import { SafeArea } from '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
 ```
 
 then just wrap the part you want to apply safe area padding on with `safe-area` tag as below
@@ -102,9 +102,9 @@ You will have to import the plugin in your component in order to make the web co
 <summary>React</summary>
 
 ```jsx
-import '@aashu-dubey/capacitor-statusbar-safe-area';
-// or with named import if you're also using other APIs from plugin
-// import { SafeArea } from '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
 
 const MyComponent = () => {
   return (
@@ -128,9 +128,9 @@ const MyComponent = () => {
 </template>
 
 <script setup lang="ts">
-import '@aashu-dubey/capacitor-statusbar-safe-area';
-// or with named import if you're also using other APIs from plugin
-// import { SafeArea } from '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
 </script>
 ```
 
@@ -194,6 +194,7 @@ Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 
 
 ### Interfaces
+
 
 #### SafeAreaType
 
