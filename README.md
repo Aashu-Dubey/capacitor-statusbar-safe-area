@@ -183,12 +183,12 @@ Get the Status bar height on Android and iOS, and on Web it returns 0.
 ### getSafeAreaInsets()
 
 ```typescript
-getSafeAreaInsets() => Promise<SafeAreaType>
+getSafeAreaInsets() => Promise<SafeAreaInset>
 ```
 
 Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 
-**Returns:** <code>Promise&lt;<a href="#safeareatype">SafeAreaType</a>&gt;</code>
+**Returns:** <code>Promise&lt;<a href="#safeareainset">SafeAreaInset</a>&gt;</code>
 
 --------------------
 
@@ -196,7 +196,7 @@ Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 ### Interfaces
 
 
-#### SafeAreaType
+#### SafeAreaInset
 
 | Prop         | Type                | Description                      |
 | ------------ | ------------------- | -------------------------------- |

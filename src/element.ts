@@ -1,6 +1,6 @@
 import { SafeArea } from './index';
 
-export class SafeAreaElement extends HTMLElement {
+class SafeAreaElement extends HTMLElement {
   mode: 'padding' | 'margin';
   edges?: string;
 
