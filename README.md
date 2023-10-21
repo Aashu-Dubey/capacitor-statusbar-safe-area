@@ -146,6 +146,15 @@ There are two attributes, that can be used with the `safe-area` web component to
 
 more details [here](#safeareahtmlprops).
 
+### With SSR
+
+The plugin and it's functionalities are client specific and might throw error when used on the server side like [#10](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10) and [#11](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11), so always make sure to access the plugin on the client side.
+
+Here are some example for a possible solution to use the plugin in:
+
+- [NuxtJs (Vue)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10#issuecomment-1685089169)
+- [NextJS (React)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11#issuecomment-1697267497)
+
 ## Capacitor version support
 
 | capacitor | plugin version       |
