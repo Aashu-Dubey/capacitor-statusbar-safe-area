@@ -38,8 +38,10 @@ public class SafeAreaPlugin extends Plugin {
             Resources res = getActivity().getApplicationContext().getResources();
             WindowInsets windowInsets = getActivity().getWindow().getDecorView().getRootWindowInsets();
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                if (windowInsets != null) {
+            if (windowInsets != null) {
+                float density = res.getDisplayMetrics().density;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     final DisplayCutout cutout = windowInsets.getDisplayCutout();
 
                     leftInset = cutout != null ? cutout.getSafeInsetLeft() : 0;
@@ -48,10 +50,15 @@ public class SafeAreaPlugin extends Plugin {
                     bottomInset = cutout != null ? cutout.getSafeInsetBottom() : 0;
 
                     Insets insets = windowInsets.getSystemWindowInsets();
-                    leftInset = Math.max(leftInset, insets.left) / res.getDisplayMetrics().density;
-                    rightInset = Math.max(rightInset, insets.right) / res.getDisplayMetrics().density;
-                    topInset = Math.max(topInset, insets.top) / res.getDisplayMetrics().density;
-                    bottomInset = Math.max(bottomInset, insets.bottom) / res.getDisplayMetrics().density;
+                    leftInset = Math.max(leftInset, insets.left) / density;
+                    rightInset = Math.max(rightInset, insets.right) / density;
+                    topInset = Math.max(topInset, insets.top) / density;
+                    bottomInset = Math.max(bottomInset, insets.bottom) / density;
+                } else {
+                    leftInset = windowInsets.getSystemWindowInsetLeft() / density;
+                    rightInset = windowInsets.getSystemWindowInsetRight() / density;
+                    topInset = windowInsets.getSystemWindowInsetTop() / density;
+                    bottomInset = windowInsets.getSystemWindowInsetBottom() / density;
                 }
             }
         }
