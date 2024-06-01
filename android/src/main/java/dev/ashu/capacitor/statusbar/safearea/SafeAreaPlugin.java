@@ -5,6 +5,9 @@ import android.graphics.Insets;
 import android.os.Build;
 import android.view.DisplayCutout;
 import android.view.WindowInsets;
+
+import androidx.core.view.WindowInsetsCompat;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -41,7 +44,13 @@ public class SafeAreaPlugin extends Plugin {
             if (windowInsets != null) {
                 float density = res.getDisplayMetrics().density;
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout() | WindowInsets.Type.navigationBars());
+                    leftInset = insets.left / density;
+                    rightInset = insets.right / density;
+                    topInset = insets.top / density;
+                    bottomInset = insets.bottom / density;
+                } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
                     final DisplayCutout cutout = windowInsets.getDisplayCutout();
 
                     leftInset = cutout != null ? cutout.getSafeInsetLeft() : 0;
