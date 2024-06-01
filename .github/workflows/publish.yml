@@ -57,7 +57,7 @@ jobs:
 
       # package provenance requires latest npm, alternatively we can probably use node 18 above instead
       - name: Install latest npm
-        run: npm install -g npm@latest
+        run: npm install -g npm@9
 
       - name: Install packages
         run: yarn install --frozen-lockfile
