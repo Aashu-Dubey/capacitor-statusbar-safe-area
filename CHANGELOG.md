@@ -1,10 +1,16 @@
 # Changelog
 
+## [v2.1.2](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.1...v2.1.2) - (2 June 2024)
+
+✨ Improvements
+
+- Add support for insets on Android 9 and below. By [@Menardi](https://github.com/Menardi) in [#12](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/12) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/12/files)).
+
 ## [v2.1.1](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.0...v2.1.1) - (18 Jun 2023)
 
 ## Breaking Change
 
-- Make `safe-area` custom element opt-in to register only if needed and to also to prevent breaking evaluating `SafeAreaController` in SSR environments. by @jjang16 in [#9](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/9)
+- Make `safe-area` custom element opt-in to register only if needed and to also to prevent breaking evaluating `SafeAreaController` in SSR environments. by [@jjang16](https://github.com/jjang16) in [#9](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/9)
 
 If earlier you were using the `safe-area` tag by simple (Empty) import, you now have to import and call function `registerSafeAreaElement`
 
@@ -60,7 +66,7 @@ more details about it's usage can be found in the [readme](https://github.com/Aa
 
 ✨ Improvements
 
-- Upgraded plugin to Capacitor v4 ([#3](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/3))(by @Hrdtr) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v1.0.1...1d85f2b)).
+- Upgraded plugin to Capacitor v4 ([#3](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/3))(by [@Hrdtr](https://github.com/Hrdtr)) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v1.0.1...1d85f2b)).
 
 - Added [example](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/tree/main/example) project 📱 ([1d85f2b](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/commit/1d85f2be317e8f3e23861f7644bdc3fa32a82f7a)).
 
