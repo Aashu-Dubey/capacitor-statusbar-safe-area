@@ -40,7 +40,7 @@ jobs:
   publish-npmjs:
     name: Publish package to npmjs
     runs-on: ubuntu-latest
-    # needs: publish-gh-packages
+    needs: publish-gh-packages
     permissions:
       id-token: write
 
