@@ -81,12 +81,6 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
-      # TODO: DEPRECATED, use ccache or other alternative!
-      # improve iOS build compilation time
-      - name: Restore buildcache
-        uses: mikehardy/buildcache-action@v2
-        continue-on-error: true
-
       - name: Restore Pods cache
         uses: actions/cache@v4
         with:
@@ -122,7 +116,6 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild \
-          CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ \
           -scheme App \
           -workspace App.xcworkspace \
           -sdk iphonesimulator \
