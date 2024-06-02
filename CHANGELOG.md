@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.2...v3.0.0) - (3 June 2024)
+
+✨ Improvements
+
+- Support for Capacitor v6 by [@azarz](https://github.com/azarz) in [#15](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/15) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/15/files)).
+
 ## [v2.1.2](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.1...v2.1.2) - (2 June 2024)
 
 ✨ Improvements

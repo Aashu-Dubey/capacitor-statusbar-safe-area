@@ -159,6 +159,7 @@ Here are some example for a possible solution to use the plugin in:
 
 | capacitor | plugin version       |
 | --------- | -------------------- |
+| v6.x      | 3.0.0                |
 | v5.x      | 2.1.0                |
 | v4.x      | >= 1.1.0 && <= 2.0.0 |
 | v3.x      | <= 1.0.1             |
