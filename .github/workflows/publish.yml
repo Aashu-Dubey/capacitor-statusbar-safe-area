@@ -16,13 +16,13 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Setup Web environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'yarn'
 
@@ -45,19 +45,15 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Setup .npmrc file to publish to npm
       - name: Setup Web environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
-
-      # package provenance requires latest npm, alternatively we can probably use node 18 above instead
-      - name: Install latest npm
-        run: npm install -g npm@9
 
       - name: Install packages
         run: yarn install --frozen-lockfile
