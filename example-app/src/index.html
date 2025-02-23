@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="hydrated">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example Capacitor App</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+  </head>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    h1, h2, h3, h4, h5 {
+      text-transform: uppercase;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px;
+      background-color: #73B5F6;
+      color: #fff;
+      font-size: 0.9em;
+      border: 0;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    main {
+      padding: 15px;
+      padding-left: calc(15px + var(--safe-area-inset-left));
+      padding-right: calc(15px + var(--safe-area-inset-right));
+      /* Using plugin's CSS variable here 👆🏼 */
+      padding-bottom: 3em;
+    }
+    .header {
+      position: relative;
+      display: block;
+      padding: 15px 15px 15px 15px;
+      text-align: center;
+      background-color: #73B5F6;
+    }
+    .header h1 {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 0.9em;
+      font-weight: 600;
+      color: #fff;
+      padding-top: var(--safe-area-inset-top); /* or var(--status-bar-height) */
+      /* // Using plugin's CSS variable here 👆🏼 */
+    }
+    main hr { height: 1px; background-color: #eee; border: 0; }
+    main h1 {
+      font-size: 1.4em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    main h2 {
+      font-size: 1.1em;
+    }
+    main h3 {
+      font-size: 0.9em;
+    }
+    main p {
+      color: #333;
+    }
+    main pre {
+      white-space: pre-line;
+    }
+    main .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+    }
+    main .footer-text {
+      text-align: center;
+      margin: 0px;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <h1>Capacitor</h1>
+    </div>
+    <main>
+      <p>
+        Capacitor plugin to get status bar height and safe area insets on Android & iOS in your Capacitor application.
+      </p>
+      <h2>Getting Started</h2>
+      <p>
+        The plugin exports functions, CSS variables as well as web component to get and use safe area or status bar
+        height values.
+      </p>
+      <p>
+        Like in this sample, the header uses CSS variable, values below are using functions and the
+        footer uses web component (<b>&lt;safe-area&gt;</b> tag)
+      </p>
+      <p>
+        Have a look at project's <a href="https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area#readme">readme</a> for more
+        information on how to use it in your project.
+      </p>
+      <a href="https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area" target="_blank" class="button">Read more</a>
+      <h2>Status bar & Safe Area Info</h2>
+      <safe-area class="footer" mode="margin" edges="bottom">
+        <p class="footer-text">This footer uses <b>safe-area</b> tag</p>
+      </safe-area>
+    </main>
+
+    <script src="./js/example.js" type="module"></script>
+  </body>
+</html>
