@@ -22,7 +22,7 @@ jobs:
       - name: Setup Web environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           registry-url: 'https://npm.pkg.github.com'
           cache: 'yarn'
 
@@ -51,7 +51,7 @@ jobs:
       - name: Setup Web environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
 
