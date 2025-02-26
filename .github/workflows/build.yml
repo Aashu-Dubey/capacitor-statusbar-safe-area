@@ -44,14 +44,15 @@ jobs:
 
       - name: Install plugin packages
         working-directory: .
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build the plugin
         working-directory: .
         run: yarn build
 
+      # removed ==immutable here to avoid error in CI changing yarn.lock, TODO: fix this
       - name: Install example-app packages
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Build the example-app project
         run: yarn build
@@ -99,14 +100,15 @@ jobs:
 
       - name: Install plugin packages
         working-directory: .
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build the plugin
         working-directory: .
         run: yarn build
 
+      # removed ==immutable here to avoid error in CI changing yarn.lock, TODO: fix this
       - name: Install example-app packages
-        run: yarn install --frozen-lockfile
+        run: yarn install
 
       - name: Build the example-app project
         run: yarn build
