@@ -5,7 +5,7 @@ import type { SafeAreaPlugin, SafeAreaHTMLProps } from './definitions';
 import { registerSafeAreaElement } from './element';
 
 const SafeArea = registerPlugin<SafeAreaPlugin>('SafeArea', {
-  web: () => import('./web').then(m => new m.SafeAreaWeb()),
+  web: () => import('./web').then((m) => new m.SafeAreaWeb()),
 });
 
 const controller = new SafeAreaController();

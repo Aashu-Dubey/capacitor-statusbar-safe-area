@@ -14,9 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
 
       - run: yarn install --frozen-lockfile
@@ -27,9 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
 
       - run: yarn install --frozen-lockfile
@@ -41,22 +48,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Optional security step: Validate whether gradle-wrapper.jar is valid or malicious
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v3
+      - name: Enable Corepack
+        run: corepack enable
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
 
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
         with:
           add-job-summary: 'on-failure'
 
@@ -68,9 +74,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'yarn'
 
       - run: yarn install --frozen-lockfile

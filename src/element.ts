@@ -20,11 +20,7 @@ class SafeAreaElement extends HTMLElement {
     return ['mode', 'edges'];
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldValue: string,
-    newValue: string,
-  ): void {
+  attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
     if (oldValue === newValue) {
       return;
     }
@@ -37,7 +33,7 @@ class SafeAreaElement extends HTMLElement {
       const safeAreaInset = await SafeArea.getSafeAreaInsets();
 
       const isMargin = this.mode === 'margin';
-      const edges = this.edges?.split(',').map(item => item.trim());
+      const edges = this.edges?.split(',').map((item) => item.trim());
 
       const insets = {
         top: edges && !edges?.includes('top') ? 0 : safeAreaInset.top,
@@ -64,6 +60,5 @@ class SafeAreaElement extends HTMLElement {
 }
 
 export const registerSafeAreaElement = (): void => {
-  if (!customElements.get('safe-area'))
-    customElements.define('safe-area', SafeAreaElement);
+  if (!customElements.get('safe-area')) customElements.define('safe-area', SafeAreaElement);
 };

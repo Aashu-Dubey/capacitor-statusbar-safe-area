@@ -24,10 +24,7 @@ export class SafeAreaController {
         case 'android':
         case 'ios':
           {
-            elStyle.setProperty(
-              `--safe-area-inset-${inset}`,
-              `${safeAreaInset[inset as keyof SafeAreaInset]}px`,
-            );
+            elStyle.setProperty(`--safe-area-inset-${inset}`, `${safeAreaInset[inset as keyof SafeAreaInset]}px`);
           }
           break;
         default:
