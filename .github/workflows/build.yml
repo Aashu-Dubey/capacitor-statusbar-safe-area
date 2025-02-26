@@ -1,4 +1,4 @@
-name: Build example
+name: Build example-app
 
 on:
   push:
@@ -9,10 +9,10 @@ on:
 
 defaults:
   run:
-    working-directory: example
+    working-directory: example-app
 
 jobs:
-  # Create example build for Android
+  # Create example-app build for Android
   build-apk:
     name: Build Android APK
     runs-on: ubuntu-latest
@@ -50,24 +50,24 @@ jobs:
         working-directory: .
         run: yarn build
 
-      - name: Install example packages
+      - name: Install example-app packages
         run: yarn install --frozen-lockfile
 
-      - name: Build the example project
+      - name: Build the example-app project
         run: yarn build
 
       - name: Sync to copy web assets into the platform
         run: npx cap sync android
 
       - name: Build Android debug APK
-        working-directory: example/android
+        working-directory: example-app/android
         run: ./gradlew assembleDebug
 
       - name: Save apk file as artifact
         uses: actions/upload-artifact@v4
         with:
           name: cap_safearea_plugin_example_android
-          path: example/android/app/build/outputs/apk/debug/app-debug.apk
+          path: example-app/android/app/build/outputs/apk/debug/app-debug.apk
 
   # Build iOS .app build that can drag and dropped into a iOS simulator
   build-ios-simulator:
@@ -105,10 +105,10 @@ jobs:
         working-directory: .
         run: yarn build
 
-      - name: Install example packages
+      - name: Install example-app packages
         run: yarn install --frozen-lockfile
 
-      - name: Build the example project
+      - name: Build the example-app project
         run: yarn build
 
       - name: Sync to copy web assets into the platform
@@ -118,7 +118,7 @@ jobs:
         run: gem install xcpretty
 
       - name: Run simulator build command
-        working-directory: example/ios/App
+        working-directory: example-app/ios/App
         run: |
           set -o pipefail
           xcodebuild \
@@ -129,7 +129,7 @@ jobs:
           -derivedDataPath build | xcpretty
 
       - name: Store build .app file as zip
-        working-directory: example/ios/App
+        working-directory: example-app/ios/App
         run: |
           cd build/Build/Products/Release-iphonesimulator
           mv App.app safearea_plugin_example_ios.app
@@ -140,4 +140,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cap_safearea_plugin_example_ios
-          path: example/ios/App/build/Build/Products/Release-iphonesimulator/output
+          path: example-app/ios/App/build/Build/Products/Release-iphonesimulator/output
