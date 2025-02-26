@@ -1,5 +1,12 @@
 # Changelog
 
+## [v4.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v3.0.0...v4.0.0) - (27 Feb 2025)
+
+✨ Improvements
+
+- Support for Capacitor v7 ([#18](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/18)) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/18/files)).
+- iOS Swift Package Manager (SPM) support.
+
 ## [v3.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v2.1.2...v3.0.0) - (3 June 2024)
 
 ✨ Improvements
