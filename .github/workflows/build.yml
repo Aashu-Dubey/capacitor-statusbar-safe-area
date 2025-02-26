@@ -43,11 +43,6 @@ jobs:
         working-directory: .
         run: npm ci
 
-      # installing optional package to avoid failure on CI, TODO: fix this
-      - name: Save optional package @rollup/rollup-linux-arm64-musl
-        working-directory: .
-        run: npm i @rollup/rollup-linux-arm64-musl --save-optional
-
       - name: Build the plugin
         working-directory: .
         run: npm run build
