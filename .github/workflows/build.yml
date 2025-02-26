@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
+
       # Setup Web environment to install packages.
       - name: Setup Web environment
         uses: actions/setup-node@v4
@@ -73,6 +76,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
 
       # Setup Web environment to install packages.
       - name: Setup Web environment
