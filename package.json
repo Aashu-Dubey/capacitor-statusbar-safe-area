@@ -82,6 +82,5 @@
     "android": {
       "src": "android"
     }
-  },
-  "packageManager": "yarn@4.6.0"
+  }
 }

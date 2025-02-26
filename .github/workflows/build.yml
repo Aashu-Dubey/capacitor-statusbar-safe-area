@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
       # Setup Java environment in order to build the Android app.
       - name: Setup Java 21
@@ -44,18 +44,17 @@ jobs:
 
       - name: Install plugin packages
         working-directory: .
-        run: yarn install --immutable
+        run: npm ci
 
       - name: Build the plugin
         working-directory: .
-        run: yarn build
+        run: npm run build
 
-      # removed ==immutable here to avoid error in CI changing yarn.lock, TODO: fix this
       - name: Install example-app packages
-        run: yarn install
+        run: npm ci
 
       - name: Build the example-app project
-        run: yarn build
+        run: npm run build
 
       - name: Sync to copy web assets into the platform
         run: npx cap sync android
@@ -86,7 +85,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Restore Pods cache
         uses: actions/cache@v4
@@ -100,18 +99,17 @@ jobs:
 
       - name: Install plugin packages
         working-directory: .
-        run: yarn install --immutable
+        run: npm ci
 
       - name: Build the plugin
         working-directory: .
-        run: yarn build
+        run: npm run build
 
-      # removed ==immutable here to avoid error in CI changing yarn.lock, TODO: fix this
       - name: Install example-app packages
-        run: yarn install
+        run: npm ci
 
       - name: Build the example-app project
-        run: yarn build
+        run: npm run build
 
       - name: Sync to copy web assets into the platform
         run: npx cap sync ios

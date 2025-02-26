@@ -21,10 +21,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
+      - run: npm ci
+      - run: npm run lint
 
   verify-web:
     runs-on: ubuntu-latest
@@ -37,10 +37,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn verify:web
+      - run: npm ci
+      - run: npm run verify:web
 
   verify-android:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
       - uses: actions/setup-java@v4
         with:
@@ -66,8 +66,8 @@ jobs:
         with:
           add-job-summary: 'on-failure'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn verify:android
+      - run: npm ci
+      - run: npm run verify:android
 
   verify-ios:
     runs-on: macos-latest
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'yarn'
+          cache: 'npm'
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn verify:ios
+      - run: npm ci
+      - run: npm run verify:ios
