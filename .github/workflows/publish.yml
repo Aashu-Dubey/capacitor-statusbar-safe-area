@@ -18,9 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
-
       # Setup .npmrc file to publish to GitHub Packages
       - name: Setup Web environment
         uses: actions/setup-node@v4
@@ -49,9 +46,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Enable Corepack
-        run: corepack enable
 
       # Setup .npmrc file to publish to npm
       - name: Setup Web environment
