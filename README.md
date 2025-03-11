@@ -81,7 +81,7 @@ You also have to register the custom element before using the tag
 ```ts
 // app.component.ts or your-component.ts
 
-import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
 
 registerSafeAreaElement();
 ```
