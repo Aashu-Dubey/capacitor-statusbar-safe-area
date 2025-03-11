@@ -102,7 +102,7 @@ You will have to import the plugin in your component in order to make the web co
 <summary>React</summary>
 
 ```jsx
-import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
 
 registerSafeAreaElement();
 
@@ -128,7 +128,7 @@ const MyComponent = () => {
 </template>
 
 <script setup lang="ts">
-import { registerSafeAreaElement } '@aashu-dubey/capacitor-statusbar-safe-area';
+import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
 
 registerSafeAreaElement();
 </script>
