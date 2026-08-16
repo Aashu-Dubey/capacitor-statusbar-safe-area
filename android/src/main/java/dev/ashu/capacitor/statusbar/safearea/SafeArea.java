@@ -26,7 +26,10 @@ public class SafeArea {
     }
 
     public JSObject getSafeAreaInsets(Activity activity) {
-        float leftInset = 0, rightInset = 0, topInset = 0, bottomInset = 0;
+        float leftInset = 0,
+            rightInset = 0,
+            topInset = 0,
+            bottomInset = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             Resources res = activity.getApplicationContext().getResources();
             WindowInsets windowInsets = activity.getWindow().getDecorView().getRootWindowInsets();

@@ -3,9 +3,6 @@ import {
   SafeAreaController,
   registerSafeAreaElement,
 } from '@aashu-dubey/capacitor-statusbar-safe-area';
-import { SplashScreen } from '@capacitor/splash-screen';
-
-SplashScreen.hide();
 
 init();
 
