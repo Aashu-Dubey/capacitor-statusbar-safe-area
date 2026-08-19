@@ -24,7 +24,7 @@ import Capacitor
             "right": window?.safeAreaInsets.right ?? 0
         ]
     }
-    
+
     private func getActiveWindow() -> UIWindow? {
         if #available(iOS 13.0, *) {
             let scenes = UIApplication.shared.connectedScenes
