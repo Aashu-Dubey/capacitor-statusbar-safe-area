@@ -5,9 +5,7 @@ import Capacitor
     @objc public func getStatusBarHeight() -> CGFloat {
         var statusBarHeight: CGFloat = 0
         if #available(iOS 13.0, *) {
-            let scenes = UIApplication.shared.connectedScenes
-            let windowScene = scenes.first as? UIWindowScene
-            let window = windowScene?.windows.first
+            let window = getActiveWindow()
             statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         } else {
             statusBarHeight = UIApplication.shared.statusBarFrame.height
@@ -17,12 +15,7 @@ import Capacitor
     }
 
     @objc public func getSafeAreaInsets() -> [String: Any] {
-        let window: UIWindow?
-        if #available(iOS 13.0, *) {
-            window = UIApplication.shared.windows.first
-        } else {
-            window = UIApplication.shared.keyWindow
-        }
+        let window: UIWindow? = getActiveWindow()
 
         return [
             "top": window?.safeAreaInsets.top ?? 0,
@@ -30,5 +23,15 @@ import Capacitor
             "left": window?.safeAreaInsets.left ?? 0,
             "right": window?.safeAreaInsets.right ?? 0
         ]
+    }
+
+    private func getActiveWindow() -> UIWindow? {
+        if #available(iOS 13.0, *) {
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            return windowScene?.windows.first
+        } else {
+            return UIApplication.shared.keyWindow
+        }
     }
 }
