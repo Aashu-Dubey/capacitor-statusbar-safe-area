@@ -81,6 +81,13 @@ jobs:
           node-version: '24'
           cache: 'npm'
 
+      - name: Restore SPM Cache
+        uses: actions/cache@v6
+        with:
+          path: ios/App/build/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: ${{ runner.os }}-spm-
+
       - name: Install plugin packages
         working-directory: .
         run: npm ci
@@ -107,10 +114,11 @@ jobs:
           set -o pipefail
           xcodebuild \
           -scheme App \
-          -workspace App.xcworkspace \
+          -project App.xcodeproj \
           -sdk iphonesimulator \
           -configuration Release \
-          -derivedDataPath build | xcpretty
+          -derivedDataPath build \
+          -disableAutomaticPackageResolution | xcpretty
 
       - name: Store build .app file as zip
         working-directory: example-app/ios/App
