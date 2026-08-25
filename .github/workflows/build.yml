@@ -82,10 +82,11 @@ jobs:
           cache: 'npm'
 
       - name: Restore SPM Cache
+        working-directory: example-app/ios/App
         uses: actions/cache@v6
         with:
-          path: ios/App/build/SourcePackages
-          key: ${{ runner.os }}-spm-${{ hashFiles('ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          path: build/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: ${{ runner.os }}-spm-
 
       - name: Install plugin packages
