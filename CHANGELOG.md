@@ -1,5 +1,32 @@
 # Changelog
 
+## [v5.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v4.0.0...v5.0.0) - (27 Aug 2026)
+
+✨ Improvements
+
+- Support for Capacitor v8 ([#23](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/23)) ([Complete changelog](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/23/files)).
+- Native API modernizations ([817461e](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/commit/817461e3e385a3a962a5cf2866d13d6bdfe5603a)):
+  - **Android**:
+    - Migrated status bar height and safe area insets to `WindowInsetsCompat` for enhanced compatibility across API versions.
+
+    - `getStatusBarHeight()` now resolves with `{ height: 0 }` instead of rejecting the Promise or returning `null` when no height value is available, aligning Android with iOS and Web behavior.
+
+  - **iOS**: Migrated deprecated `UIApplication.shared.windows` usage to `UIWindowScene.windows`.
+
+- Improved TypeScript typings for `<safe-area>` element ([#24](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/24)):
+  - Updated `mode` and `edges` properties to be optional.
+  - The package now automatically registers `'safe-area'` in `HTMLElementTagNameMap`. Standard DOM methods like `document.querySelector('safe-area')` and `document.createElement('safe-area')` will automatically be typed as [`SafeAreaElement`](src/element.ts):
+
+    ```ts
+    const el = document.querySelector('safe-area'); // typed as SafeAreaElement | null
+    if (el) {
+      el.mode = 'margin';
+      el.edges = 'top,bottom';
+    }
+    ```
+
+- Improved framework integration documentation for `<safe-area>` web component in README for Angular (Standalone & NgModule), React and Vue ([#24](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/pull/24)).
+
 ## [v4.0.0](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/compare/v3.0.0...v4.0.0) - (27 Feb 2025)
 
 ✨ Improvements
