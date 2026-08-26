@@ -110,7 +110,11 @@ registerSafeAreaElement();
 @Component({
   selector: 'app-your-component',
   standalone: true,
-  templateUrl: './your.component.html',
+  template: `
+    <safe-area>
+      <!-- Other content -->
+    </safe-area>
+  `,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class YourComponent {}
