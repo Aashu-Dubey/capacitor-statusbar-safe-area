@@ -39,7 +39,7 @@ export interface SafeAreaHTMLProps {
    *
    * default `padding`.
    */
-  mode: 'padding' | 'margin';
+  mode?: 'padding' | 'margin';
   /**
    * Specify the edges you want to apply safe area padding on, separated by comma.
    *
@@ -47,5 +47,5 @@ export interface SafeAreaHTMLProps {
    *
    * default to all edges.
    */
-  edges: string;
+  edges?: string;
 }

@@ -109,10 +109,30 @@ registerSafeAreaElement();
 const MyComponent = () => {
   return (
     <safe-area>
-      // Other content
+      {/* Other content */}
     </safe-area>
   );
 }
+```
+
+You may need to create a `*.d.ts` file for the custom element in React:
+
+```ts
+import type { SafeAreaHTMLProps } from '@aashu-dubey/capacitor-statusbar-safe-area';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'safe-area': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > &
+        SafeAreaHTMLProps;
+    }
+  }
+}
+
+export {};
 ```
 
 </details>
@@ -134,6 +154,43 @@ registerSafeAreaElement();
 </script>
 ```
 
+Make sure you enable [recognize native custom elements](https://vuejs.org/guide/extras/web-components.html#using-custom-elements-in-vue) in `vite.config.ts`:
+
+```ts
+// vite.config.ts > plugins
+vue({
+  template: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'safe-area',
+    },
+  },
+}),
+```
+
+Also, for [proper typing support](https://vuejs.org/guide/extras/web-components.html#non-vue-web-components-and-typescript) in `.vue` `<template>`, create a `*.d.ts` file and add the following code:
+
+```ts
+import type { HTMLAttributes, PublicProps } from 'vue';
+import type { SafeAreaHTMLProps } from '@aashu-dubey/capacitor-statusbar-safe-area';
+
+type DefineCustomElement<
+  ElementType extends HTMLElement,
+  SelectedAttributes extends keyof ElementType = keyof ElementType,
+> = new () => ElementType & {
+  $props: HTMLAttributes & Partial<Pick<ElementType, SelectedAttributes>> & PublicProps
+}
+
+type SafeAreaAttributes = 'mode' | 'edges'
+
+declare module 'vue' {
+  interface GlobalComponents {
+    'safe-area': DefineCustomElement<SafeAreaHTMLProps, SafeAreaAttributes>
+  }
+}
+
+export {};
+```
+
 </details>
 
 #### Attributes
@@ -145,6 +202,18 @@ There are two attributes, that can be used with the `safe-area` web component to
 ```
 
 more details [here](#safeareahtmlprops).
+
+#### TypeScript / DOM API
+
+The package automatically registers `'safe-area'` in `HTMLElementTagNameMap`. Standard DOM methods like `document.querySelector('safe-area')` and `document.createElement('safe-area')` will automatically be typed as [`SafeAreaElement`](src/element.ts):
+
+```ts
+const el = document.querySelector('safe-area'); // typed as SafeAreaElement | null
+if (el) {
+  el.mode = 'margin';
+  el.edges = 'top,bottom';
+}
+```
 
 ### With SSR
 

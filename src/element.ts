@@ -1,8 +1,9 @@
+import type { SafeAreaHTMLProps } from './definitions';
 import { SafeArea } from './index';
 
-class SafeAreaElement extends HTMLElement {
-  mode: 'padding' | 'margin';
-  edges?: string;
+export class SafeAreaElement extends HTMLElement implements SafeAreaHTMLProps {
+  mode?: SafeAreaHTMLProps['mode'];
+  edges?: SafeAreaHTMLProps['edges'];
 
   constructor() {
     super();
