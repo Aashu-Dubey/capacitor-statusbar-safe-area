@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: '24'
           registry-url: 'https://npm.pkg.github.com'
-          cache: 'npm'
+          package-manager-cache: false
 
       - name: Install packages
         run: npm ci
@@ -43,6 +43,7 @@ jobs:
     needs: publish-gh-packages
     permissions:
       id-token: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v7
@@ -53,7 +54,7 @@ jobs:
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'npm'
+          package-manager-cache: false
 
       - name: Install packages
         run: npm ci
@@ -62,6 +63,4 @@ jobs:
         run: npm run build
 
       - name: Publish Package
-        run: npm publish --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
