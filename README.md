@@ -61,45 +61,97 @@ then you can use them in your CSS files
 
 ### HTML Tag
 
-Other than the above options, you can also use `safe-area` web component exported by the plugin.
+Other than the above options, The plugin also exports a `<safe-area>` custom web component.
 
-#### Angular
+#### Register and Use
 
-For Angular users, you will get an error warning that this web component is unknown to the Angular compiler. This is resolved by modifying the module that declares your component to allow for custom web components.
-
-```ts
-// your-component.module.ts
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-@NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
-```
-
-You also have to register the custom element before using the tag
+Register the custom element in your app initialization (e.g. `main.ts`, `app.component.ts`, or root component) or only inside the component it's being used:
 
 ```ts
-// app.component.ts or your-component.ts
-
 import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
 
 registerSafeAreaElement();
 ```
 
-then just wrap the part you want to apply safe area padding on with `safe-area` tag as below
+Then wrap the content you want to apply safe area spacing on with the `<safe-area>` tag:
 
 ```html
+<safe-area>
+  <!-- Content here -->
+</safe-area>
+```
+
+#### Attributes
+
+There are two attributes, that can be used with the `safe-area` web component to control it's behaviour, `mode` & `edges`.
+
+```html
+<safe-area mode="margin" edges="top,left,right"></safe-area>
+```
+
+more details [here](#safeareahtmlprops).
+
+#### Framework Examples
+
+<details>
+<summary><b>Angular</b></summary>
+
+You will get an error that `<safe-area>` is an unknown element to the Angular compiler. This is resolved by adding `CUSTOM_ELEMENTS_SCHEMA` to your standalone component or module schemas.
+
+##### 1. Standalone Component (Angular 14+)
+
+```ts
+// your.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
+
+@Component({
+  selector: 'app-your-component',
+  standalone: true,
+  templateUrl: './your.component.html',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class YourComponent {}
+```
+
+##### 2. NgModule
+
+Modify the module that declares your component to allow custom elements:
+
+```ts
+// your-component.module.ts
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class YourComponentModule {}
+```
+
+Then register the custom element in your component:
+
+```ts
+// app.component.ts or your-component.ts
+import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
+
+registerSafeAreaElement();
+```
+
+```html
+<!-- your.component.html -->
 <safe-area>
   <!-- Other content -->
 </safe-area>
 ```
 
-#### Others
+</details>
 
-You will have to import the plugin in your component in order to make the web component work.
+<br />
 
 <details>
-<summary>React</summary>
+<summary><b>React</b></summary>
 
 ```jsx
 import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
@@ -107,12 +159,8 @@ import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-a
 registerSafeAreaElement();
 
 const MyComponent = () => {
-  return (
-    <safe-area>
-      {/* Other content */}
-    </safe-area>
-  );
-}
+  return <safe-area>{/* Other content */}</safe-area>;
+};
 ```
 
 You may need to create a `*.d.ts` file for the custom element in React:
@@ -123,11 +171,7 @@ import type { SafeAreaHTMLProps } from '@aashu-dubey/capacitor-statusbar-safe-ar
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'safe-area': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      > &
-        SafeAreaHTMLProps;
+      'safe-area': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & SafeAreaHTMLProps;
     }
   }
 }
@@ -137,21 +181,23 @@ export {};
 
 </details>
 
+<br />
+
 <details>
-<summary>Vue</summary>
+<summary><b>Vue</b></summary>
 
 ```html
+<script setup lang="ts">
+  import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
+
+  registerSafeAreaElement();
+</script>
+
 <template>
   <safe-area>
     <!-- Other content -->
   </safe-area>
 </template>
-
-<script setup lang="ts">
-import { registerSafeAreaElement } from '@aashu-dubey/capacitor-statusbar-safe-area';
-
-registerSafeAreaElement();
-</script>
 ```
 
 Make sure you enable [recognize native custom elements](https://vuejs.org/guide/extras/web-components.html#using-custom-elements-in-vue) in `vite.config.ts`:
@@ -177,14 +223,14 @@ type DefineCustomElement<
   ElementType extends HTMLElement,
   SelectedAttributes extends keyof ElementType = keyof ElementType,
 > = new () => ElementType & {
-  $props: HTMLAttributes & Partial<Pick<ElementType, SelectedAttributes>> & PublicProps
-}
+  $props: HTMLAttributes & Partial<Pick<ElementType, SelectedAttributes>> & PublicProps;
+};
 
-type SafeAreaAttributes = 'mode' | 'edges'
+type SafeAreaAttributes = 'mode' | 'edges';
 
 declare module 'vue' {
   interface GlobalComponents {
-    'safe-area': DefineCustomElement<SafeAreaHTMLProps, SafeAreaAttributes>
+    'safe-area': DefineCustomElement<SafeAreaHTMLProps, SafeAreaAttributes>;
   }
 }
 
@@ -193,15 +239,14 @@ export {};
 
 </details>
 
-#### Attributes
+##### With SSR
 
-There are two attributes, that can be used with the `safe-area` web component to control it's behaviour, `mode` & `edges`.
+The plugin and its functionalities are client-specific and might throw an error when used on the server side like [#10](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10) and [#11](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11), so always make sure to access the plugin on the client side only.
 
-```html
-<safe-area mode="margin" edges="top,left,right"></safe-area>
-```
+Here are some examples for a possible solution to use the plugin in:
 
-more details [here](#safeareahtmlprops).
+- [NuxtJs (Vue)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10#issuecomment-1685089169)
+- [NextJS (React)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11#issuecomment-1697267497)
 
 #### TypeScript / DOM API
 
@@ -214,15 +259,6 @@ if (el) {
   el.edges = 'top,bottom';
 }
 ```
-
-### With SSR
-
-The plugin and it's functionalities are client specific and might throw error when used on the server side like [#10](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10) and [#11](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11), so always make sure to access the plugin on the client side.
-
-Here are some example for a possible solution to use the plugin in:
-
-- [NuxtJs (Vue)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/10#issuecomment-1685089169)
-- [NextJS (React)](https://github.com/Aashu-Dubey/capacitor-statusbar-safe-area/issues/11#issuecomment-1697267497)
 
 ## Capacitor version support
 
@@ -289,7 +325,7 @@ Get the Safe area insets for Android and iOS, and on Web it returns 0 for all.
 
 #### SafeAreaHTMLProps
 
-| Prop        | Type                               | Description                                                                                                                                                              |
-| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`mode`**   | <code>'padding' \| 'margin'</code> | Whether to apply safe area insets as `padding` or `margin`. default `padding`.                                                                                                          |
-| **`edges`**  | <code>string</code>                | Specify the edges you want to apply safe area padding on, separated by comma.<br><br>For example, to apply padding only on top, left and right, `edges="top,left,right"`. default to all edges. |
+| Prop        | Type                               | Default     | Description                                                                                                                                   |
+| ----------- | ---------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`mode`**  | <code>'padding' \| 'margin'</code> | `'padding'` | Whether to apply safe area insets as `padding` or `margin`.                                                                                   |
+| **`edges`** | <code>string</code>                | all edges   | Comma-separated list of edges to apply insets on.<br><br>For example, to apply padding only on top, left and right, `edges="top,left,right"`. |
