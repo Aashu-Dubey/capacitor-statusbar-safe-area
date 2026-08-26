@@ -2,6 +2,7 @@ import { registerPlugin } from '@capacitor/core';
 
 import { SafeAreaController } from './controller';
 import type { SafeAreaPlugin, SafeAreaHTMLProps } from './definitions';
+import type { SafeAreaElement } from './element';
 import { registerSafeAreaElement } from './element';
 
 const SafeArea = registerPlugin<SafeAreaPlugin>('SafeArea', {
@@ -14,6 +15,16 @@ export * from './definitions';
 export { SafeArea };
 export { controller as SafeAreaController };
 export { registerSafeAreaElement };
+
+/**
+ * For proper inference of the `safe-area` tag when used with DOM methods like `document.querySelector('safe-area')`
+ * and `document.createElement('safe-area')`.
+ */
+declare global {
+  interface HTMLElementTagNameMap {
+    'safe-area': SafeAreaElement;
+  }
+}
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
